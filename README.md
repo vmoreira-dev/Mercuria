@@ -34,4 +34,4 @@ It prioritizes scalability, accessibility, and clean code structure.
 - Responsive grid layout for all devices  
 - Secure checkout flow with validation  
 - Modular component design for easy expansion
-<img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/945c54b1-05e4-4449-8e7b-12015c86b38d" />
+
