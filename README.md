@@ -1,7 +1,7 @@
 # Mercuria
 
 <p align="center">
-  <img width="450" height="750" alt="Mercuria Preview" src="https://github.com/user-attachments/assets/cae4cbfb-d1bd-4b4e-8104-1c357ad1b77e" />
+  <img width="1500" height="1024" alt="Mercuria Preview" src="https://github.com/user-attachments/assets/cae4cbfb-d1bd-4b4e-8104-1c357ad1b77e" />
 </p>
 
 
