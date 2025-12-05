@@ -2,17 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-/* FULLSCREEN BACKGROUND */
 body {
-  @apply text-white min-h-screen;
-  background-image: url('/background.webp');
-  background-size: cover;       /* fills the screen */
-  background-position: center;  /* centers the image */
-  background-repeat: no-repeat; /* no tiling */
-  background-attachment: fixed; /* Apple-style parallax effect */
-}
-
-/* Frosted Glass Panel */
-.frosted {
-  @apply bg-white/10 backdrop-blur-xl rounded-3xl border border-white/10 shadow-xl;
+  @apply text-white;
+  background: url('/background.webp') center/cover no-repeat fixed;
 }
