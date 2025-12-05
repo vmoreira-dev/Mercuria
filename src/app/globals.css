@@ -2,38 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
-
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
+/* FULLSCREEN BACKGROUND */
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  @apply text-white min-h-screen;
+  background-image: url('/background.webp');
+  background-size: cover;       /* fills the screen */
+  background-position: center;  /* centers the image */
+  background-repeat: no-repeat; /* no tiling */
+  background-attachment: fixed; /* Apple-style parallax effect */
 }
 
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-.animate-fadeIn {
-  animation: fadeIn 0.8s ease-out forwards;
+/* Frosted Glass Panel */
+.frosted {
+  @apply bg-white/10 backdrop-blur-xl rounded-3xl border border-white/10 shadow-xl;
 }
