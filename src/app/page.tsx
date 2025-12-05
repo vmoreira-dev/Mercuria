@@ -1,4 +1,4 @@
-import MercuriaPanel from "@/components/MercuriaPanel";
+import MercuriaPanel from "./components/MercuriaPanel";
 
 export default function Page() {
   return (
