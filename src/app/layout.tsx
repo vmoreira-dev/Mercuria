@@ -1,4 +1,6 @@
 import "./globals.css";
+import { CartProvider } from "@/context/CartContext";
+
 
 export const metadata = {
   title: "Mercuria",
@@ -8,9 +10,18 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body>
-        {children}
-      </body>
+      <body
+  className="min-h-screen bg-cover bg-center"
+  style={{
+    backgroundImage: "url('/background.webp')",
+  }}
+>
+
+  <CartProvider>
+    {children}
+  </CartProvider>
+</body>
+
     </html>
   );
 }
