@@ -12,7 +12,7 @@ export default function Home() {
   const [saved, setSaved] = useState<string[]>([]);
   const [parallax, setParallax] = useState({ x: 0, y: 0 });
 
-  // ✅ Gate all client-only logic
+  // Mount + load saved state
   useEffect(() => {
     setMounted(true);
 
@@ -21,9 +21,8 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
-    if (mounted) {
-      localStorage.setItem("mercuria:saved", JSON.stringify(saved));
-    }
+    if (!mounted) return;
+    localStorage.setItem("mercuria:saved", JSON.stringify(saved));
   }, [saved, mounted]);
 
   const toggleSave = (id: string) => {
@@ -45,24 +44,14 @@ export default function Home() {
 
   return (
     <div className="min-h-screen w-full flex items-center justify-center px-6">
-      <div className="
-        relative max-w-7xl w-full
-        bg-white/10 backdrop-blur-2xl
-        rounded-3xl border border-white/30
-        shadow-[0_40px_120px_rgba(0,0,0,0.45)]
-        px-12 md:px-16 py-12
-        before:absolute before:inset-0 before:rounded-3xl
-        before:border before:border-white/20
-        before:pointer-events-none
-        overflow-hidden
-      ">
+      <div className="relative max-w-7xl w-full bg-white/10 backdrop-blur-2xl rounded-3xl border border-white/30 shadow-[0_40px_120px_rgba(0,0,0,0.45)] px-12 md:px-16 py-12 before:absolute before:inset-0 before:rounded-3xl before:border before:border-white/20 before:pointer-events-none overflow-hidden">
         <div className="pointer-events-none absolute inset-0 concept-sweep" />
 
         <div className="absolute top-6 left-8 text-[12px] md:text-[13px] tracking-[0.32em] text-white/80 uppercase">
           Mercuria
         </div>
 
-        {/* HERO */}
+        {/* HERO ROW */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-14 items-center mt-10">
           <div>
             <h1 className="text-3xl md:text-5xl font-semibold text-white mb-6">
@@ -87,7 +76,7 @@ export default function Home() {
               style={{
                 transform: mounted
                   ? `translate3d(${parallax.x}px, ${parallax.y}px, 0)`
-                  : "translate3d(0,0,0)"
+                  : "translate3d(0,0,0)",
               }}
               className="w-72 h-72 md:w-80 md:h-80 rounded-3xl bg-white/10 border border-white/30 flex items-center justify-center overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.45)] transition-transform duration-150 ease-out group-hover:scale-[1.04] group-hover:shadow-[0_30px_90px_rgba(0,0,0,0.6)]"
             >
@@ -100,7 +89,7 @@ export default function Home() {
           </button>
         </div>
 
-        {/* STRIP */}
+        {/* LOWER PRODUCT STRIP */}
         <div className="mt-14 grid grid-cols-1 sm:grid-cols-3 gap-10">
           {rest.map((product) => (
             <button
