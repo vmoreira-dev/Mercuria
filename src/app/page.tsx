@@ -5,19 +5,26 @@ import { useEffect, useState } from "react";
 import { products } from "@/lib/products";
 
 export default function Home() {
+  const [mounted, setMounted] = useState(false);
+
   const [hero, ...rest] = products;
   const [activeProduct, setActiveProduct] = useState<any>(null);
-
   const [saved, setSaved] = useState<string[]>([]);
+  const [parallax, setParallax] = useState({ x: 0, y: 0 });
 
+  // ✅ Gate all client-only logic
   useEffect(() => {
+    setMounted(true);
+
     const stored = localStorage.getItem("mercuria:saved");
     if (stored) setSaved(JSON.parse(stored));
   }, []);
 
   useEffect(() => {
-    localStorage.setItem("mercuria:saved", JSON.stringify(saved));
-  }, [saved]);
+    if (mounted) {
+      localStorage.setItem("mercuria:saved", JSON.stringify(saved));
+    }
+  }, [saved, mounted]);
 
   const toggleSave = (id: string) => {
     setSaved((prev) =>
@@ -25,9 +32,9 @@ export default function Home() {
     );
   };
 
-  const [parallax, setParallax] = useState({ x: 0, y: 0 });
-
   const handleMouseMove = (e: React.MouseEvent<HTMLButtonElement>) => {
+    if (!mounted) return;
+
     const rect = e.currentTarget.getBoundingClientRect();
     const x = (e.clientX - rect.left - rect.width / 2) / 25;
     const y = (e.clientY - rect.top - rect.height / 2) / 25;
@@ -38,28 +45,24 @@ export default function Home() {
 
   return (
     <div className="min-h-screen w-full flex items-center justify-center px-6">
-      <div
-        className="
-          relative
-          max-w-7xl w-full
-          bg-white/10 backdrop-blur-2xl
-          rounded-3xl
-          border border-white/30
-          shadow-[0_40px_120px_rgba(0,0,0,0.45)]
-          px-12 md:px-16 py-12
-          before:absolute before:inset-0 before:rounded-3xl
-          before:border before:border-white/20
-          before:pointer-events-none
-          overflow-hidden
-        "
-      >
+      <div className="
+        relative max-w-7xl w-full
+        bg-white/10 backdrop-blur-2xl
+        rounded-3xl border border-white/30
+        shadow-[0_40px_120px_rgba(0,0,0,0.45)]
+        px-12 md:px-16 py-12
+        before:absolute before:inset-0 before:rounded-3xl
+        before:border before:border-white/20
+        before:pointer-events-none
+        overflow-hidden
+      ">
         <div className="pointer-events-none absolute inset-0 concept-sweep" />
 
         <div className="absolute top-6 left-8 text-[12px] md:text-[13px] tracking-[0.32em] text-white/80 uppercase">
           Mercuria
         </div>
 
-        {/* HERO ROW */}
+        {/* HERO */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-14 items-center mt-10">
           <div>
             <h1 className="text-3xl md:text-5xl font-semibold text-white mb-6">
@@ -68,17 +71,7 @@ export default function Home() {
 
             <button
               onClick={() => setActiveProduct(hero)}
-              className="
-                inline-flex items-center justify-center
-                px-7 py-3
-                rounded-full
-                bg-white text-black
-                text-sm font-medium
-                shadow-[0_8px_24px_rgba(0,0,0,0.35)]
-                hover:scale-[1.03]
-                active:scale-[0.97]
-                transition
-              "
+              className="inline-flex items-center justify-center px-7 py-3 rounded-full bg-white text-black text-sm font-medium shadow-[0_8px_24px_rgba(0,0,0,0.35)] hover:scale-[1.03] active:scale-[0.97] transition"
             >
               View Details
             </button>
@@ -92,20 +85,11 @@ export default function Home() {
           >
             <div
               style={{
-                transform: `translate3d(${parallax.x}px, ${parallax.y}px, 0)`
+                transform: mounted
+                  ? `translate3d(${parallax.x}px, ${parallax.y}px, 0)`
+                  : "translate3d(0,0,0)"
               }}
-              className="
-                w-72 h-72 md:w-80 md:h-80
-                rounded-3xl
-                bg-white/10
-                border border-white/30
-                flex items-center justify-center
-                overflow-hidden
-                shadow-[0_20px_60px_rgba(0,0,0,0.45)]
-                transition-transform duration-150 ease-out
-                group-hover:scale-[1.04]
-                group-hover:shadow-[0_30px_90px_rgba(0,0,0,0.6)]
-              "
+              className="w-72 h-72 md:w-80 md:h-80 rounded-3xl bg-white/10 border border-white/30 flex items-center justify-center overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.45)] transition-transform duration-150 ease-out group-hover:scale-[1.04] group-hover:shadow-[0_30px_90px_rgba(0,0,0,0.6)]"
             >
               <img
                 src={hero.image}
@@ -116,45 +100,25 @@ export default function Home() {
           </button>
         </div>
 
-        {/* LOWER PRODUCT STRIP */}
+        {/* STRIP */}
         <div className="mt-14 grid grid-cols-1 sm:grid-cols-3 gap-10">
           {rest.map((product) => (
             <button
               key={product.id}
               onClick={() => setActiveProduct(product)}
-              className="
-                group
-                relative
-                rounded-2xl
-                p-7
-                text-left
-                bg-white/8
-                backdrop-blur-xl
-                border border-white/15
-                shadow-[0_12px_40px_rgba(0,0,0,0.35)]
-                transition
-                hover:-translate-y-2
-                hover:shadow-[0_30px_80px_rgba(0,0,0,0.5)]
-              "
+              className="group relative rounded-2xl p-7 text-left bg-white/8 backdrop-blur-xl border border-white/15 shadow-[0_12px_40px_rgba(0,0,0,0.35)] transition hover:-translate-y-2 hover:shadow-[0_30px_80px_rgba(0,0,0,0.5)]"
             >
               <div className="relative w-full h-48 mb-5 flex items-center justify-center">
                 <img
                   src={product.image}
                   alt={product.name}
-                  className="
-                    h-full
-                    w-auto
-                    object-contain
-                    transition
-                    group-hover:scale-[1.08]
-                    drop-shadow-[0_28px_55px_rgba(0,0,0,0.5)]
-                  "
+                  className="h-full w-auto object-contain transition group-hover:scale-[1.08] drop-shadow-[0_28px_55px_rgba(0,0,0,0.5)]"
                 />
               </div>
 
               <p className="text-sm text-white">{product.name}</p>
 
-              {saved.includes(product.id) && (
+              {mounted && saved.includes(product.id) && (
                 <span className="absolute top-3 right-3 w-2.5 h-2.5 rounded-full bg-white shadow-[0_0_10px_rgba(255,255,255,0.9)]" />
               )}
             </button>
@@ -163,7 +127,7 @@ export default function Home() {
       </div>
 
       {/* MODAL */}
-      {activeProduct && (
+      {mounted && activeProduct && (
         <div
           onClick={() => setActiveProduct(null)}
           className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-xl"
@@ -201,21 +165,10 @@ export default function Home() {
                   ${activeProduct.price}
                 </p>
 
-                {/* ✅ LOCKED GEOMETRY — FULL LABEL — NO RESIZE */}
                 <div className="flex gap-4">
                   <button
                     onClick={() => toggleSave(activeProduct.id)}
-                    className="
-                      w-[220px] h-[42px]
-                      text-xs
-                      rounded-full
-                      bg-white/15 text-white
-                      border border-white/20
-                      hover:bg-white/25
-                      transition
-                      flex items-center justify-center
-                      whitespace-nowrap
-                    "
+                    className="w-[220px] h-[42px] text-xs rounded-full bg-white/15 text-white border border-white/20 hover:bg-white/25 transition flex items-center justify-center whitespace-nowrap"
                   >
                     {saved.includes(activeProduct.id)
                       ? "Saved to Collection"
@@ -224,15 +177,7 @@ export default function Home() {
 
                   <button
                     onClick={() => setActiveProduct(null)}
-                    className="
-                      w-[220px] h-[42px]
-                      text-xs
-                      rounded-full
-                      bg-white text-black
-                      shadow
-                      transition
-                      flex items-center justify-center
-                    "
+                    className="w-[220px] h-[42px] text-xs rounded-full bg-white text-black shadow transition flex items-center justify-center"
                   >
                     Close
                   </button>
