@@ -57,9 +57,10 @@ export default function Home() {
         <div className="pointer-events-none absolute inset-0 concept-sweep" />
 
         {/* ✅ MERCURIA MICRO HEADER */}
-        <div className="absolute top-6 left-8 text-[10px] tracking-[0.35em] text-white/70 uppercase">
+        <div className="absolute top-6 left-8 text-[12px] md:text-[13px] tracking-[0.32em] text-white/80 uppercase">
           Mercuria
         </div>
+
 
         {/* HERO ROW */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-14 items-center mt-10">
@@ -97,6 +98,7 @@ export default function Home() {
                 transform: `translate3d(${parallax.x}px, ${parallax.y}px, 0)`
               }}
               className="
+                
                 w-72 h-72 md:w-80 md:h-80
                 rounded-3xl
                 bg-white/10
