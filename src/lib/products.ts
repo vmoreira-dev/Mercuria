@@ -10,31 +10,31 @@ export type StoreProduct = {
 
 export const products: StoreProduct[] = [
   {
-    id: "headphones",
-    name: "Wireless Headphones",
+    id: "auralis-x",
+    name: "Auralis X",
     price: 299,
-    image: "/images/headphones.png", // adjust to whatever you use
-    description: "Premium wireless over-ear audio.",
+    image: "/images/headphones.png",
+    description: "Flagship over-ear acoustics engineered for spatial clarity and deep isolation.",
   },
   {
-    id: "watch",
-    name: "Smartwatch",
+    id: "chronos-s",
+    name: "Chronos S",
     price: 199,
     image: "/images/watch.png",
-    description: "Health tracking on your wrist.",
+    description: "Precision health tracking in a streamlined, performance-first profile.",
   },
   {
-    id: "speaker",
-    name: "Smart Speaker",
+    id: "sonis-core",
+    name: "Sonis Core",
     price: 99,
     image: "/images/speaker.png",
-    description: "Voice-controlled home audio.",
+    description: "Essential atmospheric sound tuned for intelligent everyday environments.",
   },
   {
-    id: "camera",
-    name: "Camera",
+    id: "spectra-pro",
+    name: "Spectra Pro",
     price: 899,
     image: "/images/camera.png",
-    description: "High-resolution mirrorless system.",
+    description: "Professional-grade mirrorless system built for uncompromising capture.",
   },
 ];
