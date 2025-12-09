@@ -1,25 +1,21 @@
 # Mercuria
 
-<p align="center">
-  <img height="450" width="750" alt="Horizon Preview" src="https://github.com/user-attachments/assets/9cc12c27-83c4-441a-a47f-e3bec5fd0f7d" />
-</p>
+![Mercuria — Luxury Storefront UI](./public/assets/mercuria.webp)
 
-
-
-E-commerce interface with modular components and responsive design.
+A luxury storefront built for controlled product presentation
 
 ---
 
 ## Overview
 
-Mercuria delivers a modern shopping UI focused on smooth product browsing and quick checkout.  
-It prioritizes scalability, accessibility, and clean code structure.
+Mercuria is a high-end product showcase focused on curation, spacing, and visual hierarchy.  
+The interface is designed around restraint and pacing, allowing products to stand on their own without UI noise.
 
 ---
 
 ## Live Demo
 
-[mercuria.vmoreira.dev](https://mercuria.vmoreira.dev)
+https://mercuria.vmoreira.dev
 
 ---
 
@@ -27,17 +23,16 @@ It prioritizes scalability, accessibility, and clean code structure.
 
 - React.js  
 - Tailwind CSS  
-- Node.js / Express  
 - TypeScript  
+- Node.js / Express  
 - MongoDB  
 
 ---
 
 ## Features
 
-- Product catalog with dynamic filtering and sorting  
-- Shopping cart with live item updates  
-- Responsive grid layout for all devices  
-- Secure checkout flow with validation  
-- Modular component design for easy expansion
-
+- Curated product catalog with refined filtering  
+- Luxury-first layout with controlled spacing and pacing  
+- Fully responsive grid system  
+- Modular component structure for visual consistency  
+- High-fidelity UI for presentation-focused experiences  
