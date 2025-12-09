@@ -1,12 +1,12 @@
 // src/app/page.tsx
 "use client";
 
+import { useState } from "react";
 import { products } from "@/lib/products";
-import { useCart } from "@/context/CartContext";
 
 export default function Home() {
-  const { addItem } = useCart();
   const [hero, ...rest] = products;
+  const [activeProduct, setActiveProduct] = useState<any>(null);
 
   return (
     <div className="min-h-screen w-full flex items-center justify-center px-6">
@@ -44,7 +44,7 @@ export default function Home() {
             </p>
 
             <button
-              onClick={() => addItem(hero)}
+              onClick={() => setActiveProduct(hero)}
               className="
                 inline-flex items-center justify-center
                 px-6 py-2.5
@@ -57,12 +57,15 @@ export default function Home() {
                 transition
               "
             >
-              Add to Bag
+              View Details
             </button>
           </div>
 
-          {/* Right: hero image */}
-          <div className="justify-self-center">
+          {/* Right: hero image — NOW CLICKABLE */}
+          <button
+            onClick={() => setActiveProduct(hero)}
+            className="justify-self-center group"
+          >
             <div
               className="
                 w-64 h-64 md:w-72 md:h-72
@@ -72,6 +75,9 @@ export default function Home() {
                 flex items-center justify-center
                 overflow-hidden
                 shadow-[0_20px_60px_rgba(0,0,0,0.45)]
+                transition
+                group-hover:scale-[1.04]
+                group-hover:shadow-[0_30px_90px_rgba(0,0,0,0.6)]
               "
             >
               <img
@@ -80,15 +86,15 @@ export default function Home() {
                 className="w-full h-full object-cover"
               />
             </div>
-          </div>
+          </button>
         </div>
 
-        {/* LOWER PRODUCT STRIP — FLOATING GLASS + BIGGER IMAGES */}
+        {/* LOWER PRODUCT STRIP */}
         <div className="mt-10 grid grid-cols-1 sm:grid-cols-3 gap-8">
           {rest.map((product) => (
             <button
               key={product.id}
-              onClick={() => addItem(product)}
+              onClick={() => setActiveProduct(product)}
               className="
                 group
                 relative
@@ -104,7 +110,6 @@ export default function Home() {
                 hover:shadow-[0_30px_80px_rgba(0,0,0,0.5)]
               "
             >
-              {/* BIG FLOATING IMAGE */}
               <div className="relative w-full h-44 md:h-48 mb-4 flex items-center justify-center">
                 <img
                   src={product.image}
@@ -130,6 +135,75 @@ export default function Home() {
           ))}
         </div>
       </div>
+
+      {/* LUXURY PRODUCT MODAL */}
+      {activeProduct && (
+        <div
+          onClick={() => setActiveProduct(null)}
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-xl"
+        >
+          <div
+            onClick={(e) => e.stopPropagation()}
+            className="
+              relative
+              max-w-2xl w-full mx-6
+              rounded-3xl
+              bg-white/12 backdrop-blur-2xl
+              border border-white/20
+              shadow-[0_40px_120px_rgba(0,0,0,0.6)]
+              p-10
+            "
+          >
+            <button
+              onClick={() => setActiveProduct(null)}
+              className="absolute top-4 right-4 text-white/70 hover:text-white transition"
+            >
+              ✕
+            </button>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+              <div className="flex justify-center">
+                <img
+                  src={activeProduct.image}
+                  alt={activeProduct.name}
+                  className="h-64 object-contain drop-shadow-[0_30px_70px_rgba(0,0,0,0.6)]"
+                />
+              </div>
+
+              <div>
+                <p className="text-xs tracking-[0.25em] text-white/70 mb-3">
+                  PRODUCT DETAILS
+                </p>
+
+                <h2 className="text-3xl font-semibold text-white mb-3">
+                  {activeProduct.name}
+                </h2>
+
+                <p className="text-lg text-white/90 mb-6">
+                  ${activeProduct.price}
+                </p>
+
+                <button
+                  onClick={() => setActiveProduct(null)}
+                  className="
+                    inline-flex items-center justify-center
+                    px-8 py-3
+                    rounded-full
+                    bg-white text-black
+                    text-sm font-medium
+                    shadow-[0_10px_30px_rgba(0,0,0,0.4)]
+                    hover:scale-[1.05]
+                    active:scale-[0.96]
+                    transition
+                  "
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
