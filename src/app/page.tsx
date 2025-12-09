@@ -53,14 +53,11 @@ export default function Home() {
           overflow-hidden
         "
       >
-        {/* ✅ SHOWROOM LIGHT SWEEP */}
         <div className="pointer-events-none absolute inset-0 concept-sweep" />
 
-        {/* ✅ MERCURIA MICRO HEADER */}
         <div className="absolute top-6 left-8 text-[12px] md:text-[13px] tracking-[0.32em] text-white/80 uppercase">
           Mercuria
         </div>
-
 
         {/* HERO ROW */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-14 items-center mt-10">
@@ -98,7 +95,6 @@ export default function Home() {
                 transform: `translate3d(${parallax.x}px, ${parallax.y}px, 0)`
               }}
               className="
-                
                 w-72 h-72 md:w-80 md:h-80
                 rounded-3xl
                 bg-white/10
@@ -166,6 +162,7 @@ export default function Home() {
         </div>
       </div>
 
+      {/* MODAL */}
       {activeProduct && (
         <div
           onClick={() => setActiveProduct(null)}
@@ -204,10 +201,21 @@ export default function Home() {
                   ${activeProduct.price}
                 </p>
 
+                {/* ✅ LOCKED GEOMETRY — FULL LABEL — NO RESIZE */}
                 <div className="flex gap-4">
                   <button
                     onClick={() => toggleSave(activeProduct.id)}
-                    className="px-8 py-3 rounded-full bg-white/15 text-white border border-white/20 hover:bg-white/25 transition"
+                    className="
+                      w-[220px] h-[42px]
+                      text-xs
+                      rounded-full
+                      bg-white/15 text-white
+                      border border-white/20
+                      hover:bg-white/25
+                      transition
+                      flex items-center justify-center
+                      whitespace-nowrap
+                    "
                   >
                     {saved.includes(activeProduct.id)
                       ? "Saved to Collection"
@@ -216,7 +224,15 @@ export default function Home() {
 
                   <button
                     onClick={() => setActiveProduct(null)}
-                    className="px-8 py-3 rounded-full bg-white text-black shadow hover:scale-[1.05] transition"
+                    className="
+                      w-[220px] h-[42px]
+                      text-xs
+                      rounded-full
+                      bg-white text-black
+                      shadow
+                      transition
+                      flex items-center justify-center
+                    "
                   >
                     Close
                   </button>
