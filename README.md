@@ -9,7 +9,7 @@
 Mercuria is a high-end product showcase built around restraint pacing and visual hierarchy.  
 It emphasizes presence over density allowing products to stand on their own without UI noise.
 
-View https://mercuria.vmoreira.dev
+[View](https://mercunia.vmoreira.dev)
 
 ---
 
