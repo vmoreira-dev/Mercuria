@@ -15,7 +15,7 @@ It emphasizes presence over density allowing products to stand on their own with
 
 ## Design
 
-- Curated presentation over infinite scroll  
+- Curated presentation  
 - Controlled spacing and rhythm  
 - Visual hierarchy that favors focus  
 - Interfaces that slow the viewer down  
