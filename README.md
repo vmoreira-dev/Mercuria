@@ -23,10 +23,11 @@ It emphasizes presence over density allowing products to stand on their own with
 
 ---
 
-## Execution
+## Stack
 
-- React  
+- Next.js 16 (App Router)  
+- React 19  
 - TypeScript  
 - Tailwind CSS  
-- Node.js  
-- MongoDB  
+- Framer Motion (animation)  
+
