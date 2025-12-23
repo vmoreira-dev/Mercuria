@@ -28,6 +28,7 @@ It emphasizes presence over density allowing products to stand on their own with
 - Next.js 16 (App Router)  
 - React 19  
 - TypeScript  
-- Tailwind CSS  
-- Framer Motion (animation)  
+- Tailwind CSS (v3)  
+- Framer Motion  
+
 
