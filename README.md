@@ -1,6 +1,6 @@
 # Mercuria
 
-![Mercuria — Luxury Storefront UI](./public/assets/mercuria.webp)
+![Mercuria — Luxury Storefront UI](./public/assets/mercuria_5_4.webp)
 
 ---
 
