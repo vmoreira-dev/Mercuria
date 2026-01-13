@@ -26,8 +26,7 @@ Mercuria is a high-end product showcase built around restrained pacing and visua
 - Next.js
 - React
 - TypeScript
-- Tailwind CSS (v3)
-- Framer Motion
+- Tailwind 
 
 
 
