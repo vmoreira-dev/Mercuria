@@ -14,9 +14,10 @@ Mercuria is a high-end product showcase built around restrained pacing and visua
 
 ## Design
 
-- Curated presentation
-- Controlled spacing and rhythm
-- Visual hierarchy that favors focus
+- Light, cool color palette with a soft blurred backdrop
+- A large central panel presents one product at a time
+- Motion is slow and controlled during transitions
+
 
 ---
 
