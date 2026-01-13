@@ -6,29 +6,27 @@
 
 ## Overview
 
-Mercuria is a high-end product showcase built around restraint pacing and visual hierarchy.  
-It emphasizes presence over density allowing products to stand on their own without UI noise.
+Mercuria is a high-end product showcase built around restrained pacing and visual hierarchy.
 
-[View](https://mercunia.vmoreira.dev)
+[Live Demo](https://mercunia.vmoreira.dev)
 
 ---
 
 ## Design
 
-- Curated presentation  
-- Controlled spacing and rhythm  
-- Visual hierarchy that favors focus  
-- Interfaces that slow the viewer down  
-- Luxury expressed through restraint  
+- Curated presentation
+- Controlled spacing and rhythm
+- Visual hierarchy that favors focus
 
 ---
 
 ## Stack
 
-- Next.js 16 (App Router)  
-- React 19  
-- TypeScript  
-- Tailwind CSS (v3)  
-- Framer Motion  
+- Next.js
+- React
+- TypeScript
+- Tailwind CSS (v3)
+- Framer Motion
+
 
 
