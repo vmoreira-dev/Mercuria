@@ -6,6 +6,10 @@ import type { ReactNode } from "react";
 export const metadata = {
   title: "Mercuria",
   description: "Frosted UI",
+  applicationName: "Mercuria",
+  icons: {
+    icon: "/favicon-mercuria.svg",
+  },
 };
 
 export default function RootLayout({
@@ -17,9 +21,7 @@ export default function RootLayout({
     <html lang="en">
       <body
         className="min-h-screen bg-cover bg-center"
-        style={{
-          backgroundImage: "url('/background.webp')",
-        }}
+        style={{ backgroundImage: "url('/background.webp')" }}
       >
         <CartProvider>{children}</CartProvider>
       </body>
