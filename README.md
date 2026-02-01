@@ -8,7 +8,7 @@
 
 Mercuria is a high-end product showcase built around restrained pacing and visual hierarchy.
 
-[Live Demo](https://mercunia.vmoreira.dev)
+**[Live Demo](https://mercunia.vmoreira.dev)**
 
 ---
 
